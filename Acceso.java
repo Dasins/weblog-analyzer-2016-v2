@@ -57,5 +57,13 @@ public class Acceso
     public Fecha fecha() {
         return fecha;
     }
+    
+    /**
+     * Devuelve la web a la que se solicito acceso.
+     * @return Devuelve la web a la que se solicito acceso.
+     */
+    public String web() {
+        return web;
+    }
 
 }
