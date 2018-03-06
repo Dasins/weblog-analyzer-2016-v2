@@ -85,6 +85,6 @@ public class Fecha {
      * @return Devuelve toda la informacion sobre esta fecha como una cadena de texto.
      */
     public String toString() {
-        return "[" + ano +"/" + mes + "/" + dia + "]\t" + hora + ":" + minuto;
+        return "[" + ano +" " + mes + " " + dia + " " + hora + " " + minuto + "]";
     }
 }

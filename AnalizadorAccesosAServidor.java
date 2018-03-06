@@ -28,11 +28,13 @@ public class AnalizadorAccesosAServidor {
      */
     public void analizarArchivoDeLog(String archivo) {
         accesos.clear();
+        int id = 0;
         File archivoALeer = new File(archivo);
         try {
             Scanner sc = new Scanner(archivoALeer);
             while (sc.hasNextLine()) {
-                accesos.add(new Acceso(sc.nextLine()));
+                accesos.add(new Acceso(sc.nextLine(), id));
+                id++;
             }
             sc.close();
         }
@@ -104,7 +106,35 @@ public class AnalizadorAccesosAServidor {
     
     public String clienteConMasAccesosExitosos()
     {
-        return "";
+        String retorno = null;
+        if (!accesos.isEmpty()) {
+            HashMap<String, Integer> topClientes = new HashMap<>();
+            for (Acceso acceso : accesos) {       
+                String clienteActual = acceso.ip();
+                Integer numAccesos = topClientes.get(clienteActual);
+                if(acceso.codRespuesta() < 400) {
+                    if (numAccesos == null) {
+                        topClientes.put(clienteActual, 1);
+                    }
+                    else {
+                        topClientes.put(clienteActual, numAccesos + 1);
+                    }
+                }
+            }
+            int maxVisitas = 0;
+            for (Map.Entry<String, Integer> entrada : topClientes.entrySet()) {
+                String ipActual = entrada.getKey();
+                int accesosIPActual = entrada.getValue();
+                if (entrada.getValue() > maxVisitas) {
+                    maxVisitas = entrada.getValue();
+                    retorno = entrada.getKey();
+                }
+                else if (entrada.getValue() == maxVisitas && retorno.compareTo(entrada.getKey()) < 0) {
+                    retorno = entrada.getKey();
+                }
+            }
+        }
+        return retorno;
     }
 
 
