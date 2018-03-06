@@ -20,15 +20,7 @@ public class AnalizadorAccesosAServidor
         try {
             Scanner sc = new Scanner(archivoALeer);
             while (sc.hasNextLine()) {
-                String lineaLeida = sc.nextLine();               
-                String[] elementosLinea = lineaLeida.split(" ");
-                Acceso accesoActual = new Acceso(Integer.parseInt(elementosLinea[0]), 
-                                                 Integer.parseInt(elementosLinea[1]), 
-                                                 Integer.parseInt(elementosLinea[2]),
-                                                 Integer.parseInt(elementosLinea[3]), 
-                                                 Integer.parseInt(elementosLinea[4]));               
-                
-                accesos.add(accesoActual);
+                accesos.add(new Acceso(sc.nextLine()));
             }
             sc.close();
         }
@@ -46,7 +38,7 @@ public class AnalizadorAccesosAServidor
             int[] accesosPorHora = new int[24];
     
             for (Acceso accesoActual : accesos) {
-                int horaAccesoActual = accesoActual.getHora();
+                int horaAccesoActual = accesoActual.fecha().hora();
                 accesosPorHora[horaAccesoActual] = accesosPorHora[horaAccesoActual] + 1;
             }
             
