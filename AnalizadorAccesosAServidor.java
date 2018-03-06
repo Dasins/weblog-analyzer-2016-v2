@@ -38,7 +38,7 @@ public class AnalizadorAccesosAServidor
             int[] accesosPorHora = new int[24];
     
             for (Acceso accesoActual : accesos) {
-                int horaAccesoActual = accesoActual.getHora();
+                int horaAccesoActual = accesoActual.fecha().hora();
                 accesosPorHora[horaAccesoActual] = accesosPorHora[horaAccesoActual] + 1;
             }
             
