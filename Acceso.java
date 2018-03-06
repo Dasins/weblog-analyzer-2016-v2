@@ -6,13 +6,26 @@ public class Acceso
     private int hora;
     private int minutos;
     
-    public Acceso(int ano, int mes, int dia, int hora, int minutos)
+    public Acceso(String entrada)
     {
-        this.ano = ano;
-        this.mes = mes;
-        this.dia = dia;
-        this.hora = hora;
-        this.minutos = minutos;
+      int[] fecha = toInt(entrada.split(" "));
+      ano = fecha[0];
+      mes = fecha[1];
+      dia = fecha[2];
+      hora = fecha[3];
+      minutos = fecha[4];
+    }
+    
+    /**
+     * Convierte colecciones de String en colecciones de enteros.   <p>
+     * Si la coleccion contiene elementos que no sean numeros, se produce una excepcion.
+     */
+    private int[] toInt(String[] coleccion) {
+        int[] retorno = new int[coleccion.length];
+        for (int i = 0; i < coleccion.length; i++) {
+            retorno[i] = Integer.parseInt(coleccion[i]);
+        }
+        return retorno;
     }
     
     public int getAno() 
