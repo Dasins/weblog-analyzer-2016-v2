@@ -25,7 +25,7 @@ public class Acceso
      * 
      * @param entrada Cadena de texto con el siguiente formato: {@code DireccionIP [AAAA MM DD hh mm] Web CodigoRespuestaHTTP}
      */
-    public Acceso(String entrada)
+    public Acceso(String entrada, int id)
     {
       String[] datos = entrada.split(" \\[|\\] ");
       ip = datos[0];
@@ -56,6 +56,38 @@ public class Acceso
      */
     public Fecha fecha() {
         return fecha;
+    }
+    
+    /**
+     * Devuelve la web a la que se solicito acceso.
+     * @return Devuelve la web a la que se solicito acceso.
+     */
+    public String web() {
+        return web;
+    }
+    
+    /**
+     * Devuelve la ip de quien solicito acceso.
+     * @return Devuelve la ip de quien solicito acceso.
+     */
+    public String ip() {
+        return ip;
+    }
+    
+    /**
+     * Devuelve un codigo de respuesta http en funcion al resultado del acceso.
+     * @return Devuelve un codigo de respuesta http en funcion al resultado del acceso.
+     */
+    public int codRespuesta() {
+        return codRespuesta;
+    }
+    
+    /**
+     * Devuelve una cadena con toda la informacion del acceso.
+     * @return Devuelve una cadena con toda la informacion del acceso.
+     */
+    public String toString() {
+        return ip + " " + fecha + " " + web + " " + codRespuesta;
     }
 
 }
