@@ -1,5 +1,5 @@
 /**
- * Clase que modela objetos Acceso que representan una conexion a un servidor web.                                              <p>
+ * Clase que modela objetos Acceso que representan una conexion a un servidor web.                                                  <p>
  * 
  * @author d4s1ns
  * @version 2018/03/06
@@ -17,7 +17,7 @@ public class Acceso
     /**
      * Construye objetos Acceso a partir de una cadena de texto.                                                                    <p>
      * El formato para las cadenas de texto empleadas para construir objetos Acceso es:                                             <br>
-     * {@code DireccionIP [AAAA MM DD hh mm] Web CodigoRespuestaHTTP}                                                            <br>
+     * {@code DireccionIP [AAAA MM DD hh mm] Web CodigoRespuestaHTTP}                                                               <br>
      * {@code 192.168.1.15 [2016 01 01 20 31] estudios/bachillerato.html 403} 
      * 
      * @exception ArrayIndexOutOfBoundsException El numero de valores es inferior a los requeridos por el formato.
@@ -39,8 +39,8 @@ public class Acceso
     }
     
     /**
-     * Convierte colecciones de String en colecciones de enteros.   <p>
-     * Si la coleccion contiene elementos que no sean numeros, se produce una excepcion.
+     * Convierte colecciones de String en colecciones de enteros.                                                                   
+     * @exception NumberFormatException La coleccion contiene elementos que no son numeros.
      */
     private int[] toInt(String[] coleccion) {
         int[] retorno = new int[coleccion.length];
